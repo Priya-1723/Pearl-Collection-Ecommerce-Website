@@ -102,7 +102,7 @@ const HeroSection = () => {
             </Typography>
             <Box sx={{ display: "flex", alignItems: "center", gap: 1, my: 3 }}>
               <Box
-                sx={{ bgcolor: "heading.peach", width: "16%", height: "0.5px" }}
+                sx={{ bgcolor: "heading.peach", width: "30%", height: "0.5px" }}
               ></Box>
               <Box
                 component="img"
@@ -115,7 +115,7 @@ const HeroSection = () => {
                 }}
               />
               <Box
-                sx={{ bgcolor: "heading.peach", width: "16%", height: "0.5px" }}
+                sx={{ bgcolor: "heading.peach", width: "30%", height: "0.5px" }}
               ></Box>
             </Box>
             <Typography

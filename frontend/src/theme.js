@@ -12,6 +12,8 @@ const theme = createTheme({
       default: "#FCFAF8",
       paper: "#FFFFFF",
       pink: "#eed6d5",
+      poster1: "#ded0c3",
+      poster2: "#f3dfd7",
     },
     heading: {
       main: "#7B5754", //Deep Brown
