@@ -1,32 +1,30 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import pearlImg from "/assets/pearl.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const items = [
     {
       label: "Home",
-      link: "#",
+      link: "/",
     },
     {
       label: "Shop",
-      link: "#",
-    },
-    {
-      label: "New Arrivals",
-      link: "#",
+      link: "/shop",
     },
     {
       label: "About",
-      link: "#",
+      link: "/about",
     },
     {
       label: "Contact",
-      link: "#",
+      link: "/contact",
     },
   ];
   return (
@@ -132,9 +130,17 @@ const Navbar = () => {
             }}
           >
             {items.map((item) => (
-              <Typography key={item.label} sx={{ fontSize: "1.2rem" }}>
+              <Button
+                key={item.label}
+                sx={{
+                  fontSize: "1.2rem",
+                  cursor: "pointer",
+                  textTransform: "capitalize",
+                }}
+                onClick={() => navigate(item.link)}
+              >
                 {item.label}
-              </Typography>
+              </Button>
             ))}
           </Box>
 
