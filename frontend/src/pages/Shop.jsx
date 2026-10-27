@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   AppBar,
   Box,
@@ -553,8 +553,8 @@ function ProductCard({ product, isFavorite, onToggleFavorite, listView }) {
       >
         <Box
           component="img"
-          src={product.image}
-          alt={product.name}
+          src={product.imageurl}
+          alt={product.productname}
           loading="lazy"
           sx={{
             width: "100%",
@@ -610,7 +610,7 @@ function ProductCard({ product, isFavorite, onToggleFavorite, listView }) {
             overflowWrap: "anywhere",
           }}
         >
-          {product.name}
+          {product.productname}
         </Typography>
 
         <Typography
@@ -643,6 +643,32 @@ function Shop() {
   const [view, setView] = useState("grid");
   const [page, setPage] = useState(1);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:4000/api/products/allproducts",
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch products");
+        }
+
+        const data = await response.json();
+
+        setProducts(data.allProducts);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const productsPerPage = 12;
 
